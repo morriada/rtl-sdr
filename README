@@ -4,3 +4,6 @@ turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 
 For more information see:
 http://sdr.osmocom.org/trac/wiki/rtl-sdr
+
+Also see https://github.com/morriada/senior_project
+for coherent usage of 3-1 receiver from coherent-receiver.com
