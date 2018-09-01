@@ -288,6 +288,15 @@ RTLSDR_API int rtlsdr_set_testmode(rtlsdr_dev_t *dev, int on);
 RTLSDR_API int rtlsdr_set_agc_mode(rtlsdr_dev_t *dev, int on);
 
 /*!
+ * Enable or disable the bias tee on GPIO PIN 0.
+ *
+ * \param dev the device handle given by rtlsdr_open()
+ * \param on 1 to turn on, 0 to turn off
+ * \return 1 on success
+ */
+RTLSDR_API int rtlsdr_set_bias_tee(rtlsdr_dev_t *dev, int on);
+
+/*!
  * Enable or disable the direct sampling mode. When enabled, the IF mode
  * of the RTL2832 is activated, and rtlsdr_set_center_freq() will control
  * the IF-frequency of the DDC, which can be used to tune from 0 to 28.8 MHz
@@ -385,6 +394,25 @@ RTLSDR_API int rtlsdr_read_async(rtlsdr_dev_t *dev,
  * \return 0 on success
  */
 RTLSDR_API int rtlsdr_cancel_async(rtlsdr_dev_t *dev);
+
+/*!
+ * Writes to the i2c bus to write to a register on the rtlsdr.
+ *
+ * \param dev the device handle given by rtlsdr_open()
+ * \param i2c_addr the address of the i2c register 
+ * \param reg the address of the register to write to
+ * \param val the value to right to the register
+ * \return 0 on success
+ */
+RTLSDR_API int rtlsdr_i2c_write_reg(rtlsdr_dev_t *dev, uint8_t i2c_addr, uint8_t reg, uint8_t val);
+
+/*!
+ * Turns on and off the i2c repeater.
+ *
+ * \param dev the device handle given by rtlsdr_open()
+ * \param on 1 for on 0 for off
+ */
+RTLSDR_API void rtlsdr_set_i2c_repeater(rtlsdr_dev_t *dev, int on);
 
 #ifdef __cplusplus
 }
